@@ -8,9 +8,7 @@ import com.cars.cars.model.Car;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
@@ -29,27 +27,27 @@ public class MainController {
     @Value("pas de mot de passe ou identifiant")
     private String errorMessage;
 
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    @GetMapping({"/", "/index"})
     public String index(Model model) {
         model.addAttribute("message", message);
         System.out.println("bonjour !");
         return "index";
     }
 
-    @RequestMapping(value = { "/carList" }, method = RequestMethod.GET)
+    @GetMapping("/carList")
     public String carList(Model model) {
         model.addAttribute("cars", cars);
         return "carList";
     }
 
-    @RequestMapping(value = { "/addCar" }, method = RequestMethod.GET)
+    @GetMapping("/addCar")
     public String showAddCarPage(Model model) {
         CarForm carForm = new CarForm();
         model.addAttribute("carForm", carForm);
         return "addCar";
     }
 
-    @RequestMapping(value = { "/addCar" }, method = RequestMethod.POST)
+    @PostMapping( "/addCar" )
     public String saveCar(Model model, //
                              @ModelAttribute("carForm") CarForm carForm) {
 
