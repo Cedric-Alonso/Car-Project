@@ -1,4 +1,4 @@
-package com.cars.cars.form;
+package com.consume.API.consume.form;
 
 
 public class CarForm {
