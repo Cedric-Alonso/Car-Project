@@ -7,17 +7,23 @@
 </head>
 <body>
 <h1>Inventaire des voitures</h1>
-<a href="addCar">Add Car</a>
+<a href="/carList/add">Add Car</a>
 <br/><br/>
 <div>
     <table border="1">
         <tr>
             <th>Marque</th>
             <th>Modèle</th>
+            <th>Prix</th>
+            <th>Détail</th>
+            <th>option</th>
         </tr>
         <tr th:each ="car : ${cars}">
             <td th:utext="${car.brand}">...</td>
             <td th:utext="${car.carmodel}">...</td>
+            <td th:utext="${car.price}">...</td>
+            <td><a th:href="@{'/carList/' + ${car.id}}">Détail</a></td>
+            <td><a th:href="@{'/deleteCar/' + ${car.id}}">Supprimer</a></td>
         </tr>
     </table>
 </div>

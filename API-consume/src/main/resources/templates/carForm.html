@@ -8,22 +8,40 @@
 <body>
 <h1>Ajouter une voiture:</h1>
 
-<!--
-   In Thymeleaf the equivalent of
-   JSP's ${pageContext.request.contextPath}/edit.html
-   would be @{/edit.html}
-   -->
 
-<form th:action="@{/addCar}"
-      th:object="${carForm}" method="POST">
+
+
+<div th:if="${type == 'add'}">
+<form th:action="@{/saveCar}"
+      th:object="${car}" method="POST">
     Marque:
     <input type="text" th:field="*{brand}" />
     <br/>
     Modèle:
     <input type="text" th:field="*{carmodel}" />
     <br/>
+    Prix:
+    <input type="text" th:field="*{price}" />
+    <br/>
     <input type="submit" value="Create" />
 </form>
+</div>
+
+<div th:if="${type == 'modif'}">
+    <form th:action="@{/saveUpdate}"
+          th:object="${car}" method="POST">
+        Marque:
+        <input type="text" th:field="*{brand}" />
+        <br/>
+        Modèle:
+        <input type="text" th:field="*{carmodel}" />
+        <br/>
+        Prix:
+        <input type="text" th:field="*{price}" />
+        <br/>
+        <input type="submit" value="Update" />
+    </form>
+</div>
 
 <br/>
 

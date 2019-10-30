@@ -1,18 +1,20 @@
-package com.consume.API.consume.model;
+package com.cars.cars.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "model")
 public class Car {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String brand;
     private String carmodel;
     private int price;
 
-    public Car() { }
+    public Car() {
 
-    public Car(String brand, String carmodel, int price) {
-        this.brand = brand;
-        this.carmodel = carmodel;
-        this.price = price;
     }
 
     public int getId() {
@@ -21,6 +23,13 @@ public class Car {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Car(int id , String brand, String carmodel, int price) {
+        this.id = id;
+        this.brand = brand;
+        this.carmodel = carmodel;
+        this.price = price;
     }
 
     public int getPrice() {
