@@ -1,14 +1,10 @@
-package com.reservation.reservation.model;
+package com.logique.logique.model;
 
-import javax.persistence.*;
+
 import java.util.Date;
 
-@Entity
-@Table(name = "reservation")
 public class Reservation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int iduser;
     private int idvoiture;
@@ -20,18 +16,8 @@ public class Reservation {
 
     public Reservation() { }
 
-    public Reservation(int iduser, int idvoiture, Date datedebut, Date datefin, Boolean reserve, int kmestime, int kmretour) {
-        this.iduser = iduser;
-        this.idvoiture = idvoiture;
-        this.datedebut = datedebut;
-        this.datefin = datefin;
-        this.reserve = reserve;
-        this.kmestime = kmestime;
-        this.kmretour = kmretour;
-    }
-
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(int id) {

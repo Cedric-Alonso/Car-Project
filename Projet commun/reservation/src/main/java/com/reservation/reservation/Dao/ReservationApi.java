@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface ReservationApi extends CrudRepository<Reservation, Integer> {
     Reservation findById(int id);
 
+    Reservation[] getAllByIduser(int user);
+
+    Reservation[] getAllByIdvoiture(int car);
+
 }

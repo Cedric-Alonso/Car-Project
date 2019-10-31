@@ -2,12 +2,9 @@ package com.reservation.reservation.controller;
 
 import com.reservation.reservation.Dao.ReservationApi;
 import com.reservation.reservation.model.Reservation;
-import io.swagger.annotations.Api;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.reservation.reservation.Dao.ReservationApi;
-import com.reservation.reservation.model.Reservation;
-import com.reservation.reservation.controller.*;
 
 @Api()
 @RestController
@@ -16,6 +13,7 @@ public class MainController {
     @Autowired
     ReservationApi reservationApi;
 
+    @ApiOperation("hello")
     @GetMapping("/reservations")
     public Iterable<Reservation> listReserv(){
         return reservationApi.findAll();
@@ -26,8 +24,19 @@ public class MainController {
         return reservationApi.findById(id);
     }
 
+    @GetMapping("/reservations/user/{id}")
+    public Reservation[] readUserReserv(@PathVariable int id){
+        return reservationApi.getAllByIduser(id);
+    }
+
+    @GetMapping("/reservations/car/{id}")
+    public Reservation[] readCarReserv(@PathVariable int id){
+        return reservationApi.getAllByIdvoiture(id);
+    }
+
     @PostMapping("/reservations")
     public String addReserv(@RequestBody Reservation reserv){
+
         if (readReserv(reserv.getId()) == null) {
             reservationApi.save(reserv);
             return "add ok";
